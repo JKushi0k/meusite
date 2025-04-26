@@ -14,6 +14,8 @@ export const Row = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    position: relative;
 `
 
 export const Column = styled.div`
@@ -56,16 +58,31 @@ export const MenuRight = styled.a`
     text-decoration: none;
 `
 
-export const Menu = styled.a`
-    font-style: normal;
-    font-size: 24px
-    line-height: 25px;
-    color: #ffffff;
-    margin-right: 12px;
-    text-decoration: none
-`
-
 export const UserPicture = styled.div`
     cursor: pointer;
     margin-right: 10px;
+`
+
+export const PictureDiv = styled.div`
+    width: 150px;
+    height: auto;
+    position: absolute;
+    top: 00%;
+    right: 100%;
+    margin-right: 10px;
+    padding: 10px;
+
+    background-color: #000000;
+    color: #FFFFFF;
+    border-radius: 20%;
+    border: #9900FF 3px solid;
+`
+
+export const PictureLetter = styled.a`
+    font-style: normal;
+    font-size: 24px;
+    line-height: 25px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    text-decoration: none;
 `
