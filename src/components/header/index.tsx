@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Logo from "../../assets/logo.png";
 
 import { FaUser } from "react-icons/fa";
@@ -13,12 +13,32 @@ import {
     UserPicture,
     Wrapper,
     PictureDiv,
-    PictureLetter
+    PictureLetter,
+    Column
 } from "./style"
 
 const Header = () => {
     const [mostrarDiv, setMostrarDiv] = useState(false);
     const [logado, setLogado] = useState(false);
+
+    const divRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+            const handleClickOutside = (event: MouseEvent) => {
+            if (divRef.current && !divRef.current.contains(event.target as Node)){
+                setMostrarDiv(false);
+            }
+        };
+
+        if (mostrarDiv) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [mostrarDiv]);
+    
 
     return (
         <Wrapper>
@@ -33,7 +53,7 @@ const Header = () => {
                     <UserPicture onClick={() => setMostrarDiv(!mostrarDiv)}><FaUser size={40}/></UserPicture>
                     
                     {mostrarDiv && (
-                        <PictureDiv>
+                        <PictureDiv ref={divRef}>
                             {!logado && (
                                 <>
                                     <PictureLetter href="#">Criar Conta</PictureLetter>

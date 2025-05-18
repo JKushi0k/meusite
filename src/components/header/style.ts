@@ -26,14 +26,14 @@ export const Column = styled.div`
 
 export const Wrapper = styled.div`
     background-color: #202035;
-    width: 100%
+    width: 100%;
     height: 91px:
 
-    display: flex;
+    display: fixed;
     justify-content: center;
     align-items: center;
 
-    border-bottom: 2px #FFFFFF solid
+    border-bottom: 2px #FFFFFF solid;
 `
 
 export const Img = styled.img`
@@ -44,8 +44,6 @@ export const Img = styled.img`
 
     margin-left: 5px;
     margin-right: 10px;
-
-    cursor: pointer;
 `
 
 export const MenuRight = styled.a`
@@ -85,4 +83,9 @@ export const PictureLetter = styled.a`
     color: #FFFFFF;
     margin-bottom: 30px;
     text-decoration: none;
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+        color: #00B2FF;
+    }
 `
