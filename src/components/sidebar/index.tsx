@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { GoArrowRight } from "react-icons/go";
 import { FaHouse } from "react-icons/fa6";
-import { FaVideo } from "react-icons/fa";
+import { FaVideo, FaClock } from "react-icons/fa";
 import { SiYoutubeshorts } from "react-icons/si";
-import { FaClock } from "react-icons/fa";
 
 import {
     Column,
@@ -13,41 +12,71 @@ import {
     Wrapper,
     IconArrow,
     IconSelect,
-    NavIcons
+    NavVideo,
+    NavCrono,
+    NavShorts
 } from "./style"
 
 const Sidebar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const divRef = useRef<HTMLDivElement>(null)
+    
+        useEffect(() => {
+                const handleClickOutside = (event: MouseEvent) => {
+                if (divRef.current && !divRef.current.contains(event.target as Node)){
+                    setIsOpen(false);
+                }
+            };
+    
+            if (isOpen) {
+                document.addEventListener('mousedown', handleClickOutside);
+            }
+    
+            return () => {
+                document.removeEventListener('mousedown', handleClickOutside);
+            };
+        }, [isOpen]);
+
     return(
-        <Wrapper>
+        <Wrapper isOpen={isOpen} ref={divRef}>
             <Container>
                 <Row>
-                    <IconArrow>
-                        <GoArrowRight size={70} />
+                    <IconArrow onClick={toggleSidebar} isOpen={isOpen}>
+                        {isOpen ? <GoArrowRight size={70} /> : <GoArrowRight size={70} />}
                     </IconArrow>
                 </Row>
 
                 <Row>
-                    <IconSelect href="/">
-                        <FaHouse size={60} />
+                    <IconSelect isOpen={isOpen} href="/">
+                        <FaHouse size={60} /> 
+                        <span>Home</span>
                     </IconSelect>
                 </Row>
                 
                 <Row>
-                    <NavIcons>
+                    <NavVideo isOpen={isOpen}>
                         <FaVideo size={60} />
-                    </NavIcons>
+                        <span>Vídeos</span>
+                    </NavVideo>
                 </Row>
 
                 <Row>
-                    <NavIcons>
+                    <NavShorts isOpen={isOpen}>
                         <SiYoutubeshorts size={60} />
-                    </NavIcons>
+                        <span>Shorts</span>
+                    </NavShorts>
                 </Row>
 
                 <Row>
-                    <NavIcons>
+                    <NavCrono isOpen={isOpen}>
                         <FaClock size={60} />
-                    </NavIcons>
+                        <span>Cronologia</span>
+                    </NavCrono>
                 </Row>
             </Container>
         </Wrapper>
