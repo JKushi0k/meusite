@@ -12,9 +12,7 @@ import {
     Wrapper,
     IconArrow,
     IconSelect,
-    NavVideo,
-    NavCrono,
-    NavShorts
+    NavItem,
 } from "./style"
 
 const Sidebar = () => {
@@ -25,6 +23,7 @@ const Sidebar = () => {
     };
 
     const divRef = useRef<HTMLDivElement>(null)
+
     
         useEffect(() => {
                 const handleClickOutside = (event: MouseEvent) => {
@@ -43,43 +42,45 @@ const Sidebar = () => {
         }, [isOpen]);
 
     return(
-        <Wrapper isOpen={isOpen} ref={divRef}>
-            <Container>
-                <Row>
-                    <IconArrow onClick={toggleSidebar} isOpen={isOpen}>
-                        {isOpen ? <GoArrowRight size={70} /> : <GoArrowRight size={70} />}
-                    </IconArrow>
-                </Row>
+        <>
+            <Wrapper $isOpen={isOpen} ref={divRef}>
+                <Container>
+                    <Row>
+                        <IconArrow onClick={toggleSidebar} $isOpen={isOpen}>
+                            {isOpen ? <GoArrowRight size={70} /> : <GoArrowRight size={70} />}
+                        </IconArrow>
+                    </Row>
 
-                <Row>
-                    <IconSelect isOpen={isOpen} href="/">
-                        <FaHouse size={60} /> 
-                        <span>Home</span>
-                    </IconSelect>
-                </Row>
-                
-                <Row>
-                    <NavVideo isOpen={isOpen}>
-                        <FaVideo size={60} />
-                        <span>Vídeos</span>
-                    </NavVideo>
-                </Row>
+                    <Row>
+                        <IconSelect $isOpen={isOpen} href="/">
+                            <FaHouse size={60} /> 
+                            <span>Home</span>
+                        </IconSelect>
+                    </Row>
+                    
+                    <Row>
+                        <NavItem $isOpen={isOpen} href="#">
+                            <FaVideo size={60} />
+                            <span>Vídeos</span>
+                        </NavItem>
+                    </Row>
 
-                <Row>
-                    <NavShorts isOpen={isOpen}>
-                        <SiYoutubeshorts size={60} />
-                        <span>Shorts</span>
-                    </NavShorts>
-                </Row>
+                    <Row>
+                        <NavItem $isOpen={isOpen} href="#">
+                            <SiYoutubeshorts size={60} />
+                            <span>Shorts</span>
+                        </NavItem>
+                    </Row>
 
-                <Row>
-                    <NavCrono isOpen={isOpen}>
-                        <FaClock size={60} />
-                        <span>Cronologia</span>
-                    </NavCrono>
-                </Row>
-            </Container>
-        </Wrapper>
+                    <Row>
+                        <NavItem $isOpen={isOpen} href="#">
+                            <FaClock size={60} />
+                            <span>Timeline</span>
+                        </NavItem>
+                    </Row>
+                </Container>
+            </Wrapper>
+        </>
     )
 }
 

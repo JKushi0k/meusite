@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background: linear-gradient(to left, #000009, #00066F);
+        background: linear-gradient(to left, #000009 24%, #00066F 77%);
         color: #ffffff;
         font-family: cursive;
         font-size: 24px;
