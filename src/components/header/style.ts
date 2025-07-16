@@ -1,13 +1,36 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+    background-color: #202035;
+    width: 100vw;
+    height: 10vh:
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px #FFFFFF solid;
+`
+
 export const Container = styled.div`
-    width: 100%;
-    height : 91px;
+    background-color: #202035;
+    width: 100vw;
+    height: 10.1vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+
+    border-bottom: 2px #FFFFFF solid;
 `
 
 export const Row = styled.div`
@@ -22,18 +45,6 @@ export const Column = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`
-
-export const Wrapper = styled.div`
-    background-color: #202035;
-    width: 100%;
-    height: 91px:
-
-    display: fixed;
-    justify-content: center;
-    align-items: center;
-
-    border-bottom: 2px #FFFFFF solid;
 `
 
 export const Img = styled.img`
