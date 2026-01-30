@@ -4,6 +4,7 @@ import { Header } from "@/components/header"
 import { Sidebar } from "@/components/sidebar"
 import { Lista } from "@/components/lista"
 import { Sugestao } from "@/components/sugestoes"
+import { Footer } from "@/components/footer"
 
 import './globals.css'
 
@@ -23,6 +24,7 @@ export default function Home() {
           <Lista />
           <Sugestao />
         </div>
+        <Footer />
       </main>
     </>
   )
